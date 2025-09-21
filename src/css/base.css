@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/**@see https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+@theme {
+  --color-puppy-500: oklch(0.72 0.11 178);
+
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/** fixed icon position */
+.anticon {
+  vertical-align: 0.125em;
+}
+
+.logo {
+  @apply w-[200px] h-12 bg-amber-700;
+}
