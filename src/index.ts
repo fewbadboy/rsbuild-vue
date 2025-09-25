@@ -4,6 +4,8 @@ import { createApp } from 'vue';
 import { router } from '@/router';
 import App from './App.vue';
 
+import '@/router/access'
+
 createApp(App).use(router).mount('#root');
 
 const worker = new Worker(new URL('@/workers/rank.ts', import.meta.url));

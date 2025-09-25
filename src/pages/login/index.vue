@@ -9,7 +9,6 @@
       :wrapper-col="{ span: 18 }"
       :rules="rules"
       @finish="onFinish"
-      @finishFailed="onFinishFailed"
     >
       <FormItem label="用户名" name="username">
         <Input v-model:value="formState.username" />
@@ -31,18 +30,18 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
-
 import {
+  Button,
+  Checkbox,
   Form,
   FormItem,
   Input,
   InputPassword,
-  Checkbox,
-  Button,
 } from "ant-design-vue";
 import type { Rule } from "ant-design-vue/es/form";
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
+import { setToken } from "@/utils/token";
 
 const router = useRouter();
 
@@ -65,17 +64,13 @@ const formState = reactive<LoginForm>({
   remember: true,
 });
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-  router.push("/");
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
+const onFinish = () => {
+  setToken("Token");
+  router.push({ name: "dashboard" });
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 @reference "tailwindcss";
 .login {
   @apply h-dvh flex justify-center items-center text-green-700;

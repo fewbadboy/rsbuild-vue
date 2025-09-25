@@ -4,7 +4,7 @@ import {
   type RouteRecordRaw,
 } from 'vue-router';
 
-import Layout from '@/layout/default.vue'
+import Layout from '@/layout/default.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -14,10 +14,40 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
     children: [
-      { path: 'dashboard', name: 'home', component: () => import('@/components/VuePuppy.vue') }
-    ]
+      {
+        path: '',
+        name: 'dashboard',
+        component: () => import('@/components/VuePuppy.vue'),
+      },
+    ],
+  },
+  {
+    path: '/components',
+    component: Layout,
+    children: [
+      {
+        path: '/document',
+        name: 'document',
+        component: () => import('@/pages/document/index.vue'),
+      },
+      {
+        path: '/table',
+        name: 'table',
+        component: () => import('@/pages/table/index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'not-fond',
+        component: () => import('@/pages/error/404.vue'),
+      },
+    ],
   },
 ];
 

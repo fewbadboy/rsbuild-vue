@@ -1,3 +1,10 @@
 @import "./base.css";
 @import "./components.css";
 @import "./utilities.css";
+
+/** Form Operation */
+.ant-form-item {
+  &.operation {
+    @apply ml-auto;
+  }
+}
